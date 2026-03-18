@@ -43,11 +43,27 @@ if [[ "$(uname -s)" == "Linux" ]]; then
     # Remove legacy sury key from old path
     sudo rm -f /usr/share/keyrings/deb.sury.org-php.gpg 2>/dev/null || true
     # Remove all .list files referencing third-party repos
-    sudo grep -rl 'docker\|nodesource\|charm\.sh\|cli\.github\|sury\|ondrej\|ansible' \
+    sudo grep -rl 'docker\|nodesource\|charm\.sh\|cli\.github\|sury\|ondrej\|ansible\|codeiumdata\|windsurf\|antigravity\|pkg\.dev' \
         /etc/apt/sources.list.d/ 2>/dev/null | xargs sudo rm -f 2>/dev/null || true
     # Clean APT cache and stale lists
     sudo rm -rf /var/lib/apt/lists/*
     sudo apt-get clean -qq
+
+    # --- WAIT FOR APT LOCK ---
+    echo -e "${YELLOW}Waiting for apt lock to be released...${NC}"
+    for i in $(seq 1 30); do
+        if ! sudo fuser /var/lib/apt/lists/lock /var/lib/dpkg/lock-frontend /var/lib/dpkg/lock >/dev/null 2>&1; then
+            break
+        fi
+        echo -e "${YELLOW}  apt lock held, waiting... (${i}/30)${NC}"
+        sleep 2
+    done
+    # Stop packagekitd if it still holds the lock
+    if sudo fuser /var/lib/apt/lists/lock /var/lib/dpkg/lock-frontend /var/lib/dpkg/lock >/dev/null 2>&1; then
+        echo -e "${YELLOW}  Stopping packagekitd to release apt lock...${NC}"
+        sudo systemctl stop packagekit 2>/dev/null || true
+        sleep 2
+    fi
 fi
 
 # --- STEPS CONFIGURATION ---
