@@ -39,7 +39,7 @@ curl -sL https://raw.githubusercontent.com/promovaweb/setupvibe/refs/heads/main/
 
 ## Desktop Setup — What Gets Installed
 
-**13 steps, fully automated.**
+**14 steps, fully automated.**
 
 | Step | What it does |
 |---|---|
@@ -53,9 +53,10 @@ curl -sL https://raw.githubusercontent.com/promovaweb/setupvibe/refs/heads/main/
 | 8. Modern Unix Tools | bat, eza, fd, ripgrep, fzf, zoxide, delta, and more |
 | 9. Network & Monitoring | nmap, htop, Tailscale, and others |
 | 10. SSH Server | OpenSSH server (Linux only) |
-| 11. Shell | ZSH, Oh My Zsh, Starship prompt, tmux + plugins |
-| 12. AI CLI Tools | claude-code, gemini-cli, codex, copilot-cli |
-| 13. Finalization | Cleanup, temp files, cache purge |
+| 11. Shell | ZSH, Oh My Zsh, Starship prompt (Gruvbox Rainbow) |
+| 12. Tmux & Plugins | TPM + tmux.conf with full plugin set |
+| 13. AI CLI Tools | claude-code, gemini-cli, codex, copilot-cli |
+| 14. Finalization & Cleanup | Temp files, logs, cache purge |
 
 ---
 
