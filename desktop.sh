@@ -1006,12 +1006,34 @@ EOF
 step_12() {
     if $IS_MACOS; then
         echo "Cleaning up Homebrew..."
-        brew cleanup
-        brew autoremove
+        brew_cmd cleanup --prune=all
+        brew_cmd autoremove
+
+        echo "Cleaning macOS caches and temp files..."
+        sudo rm -rf /private/tmp/* 2>/dev/null || true
+        sudo rm -rf /private/var/folders/*/*/*/com.apple.* 2>/dev/null || true
+        rm -rf "$REAL_HOME/Library/Caches/"* 2>/dev/null || true
+        rm -rf "$REAL_HOME/.Trash/"* 2>/dev/null || true
     else
-        echo "Cleaning up unnecessary packages..."
-        sudo apt-get autoremove -y >/dev/null
-        sudo apt-get clean
+        echo "Cleaning APT cache and orphaned packages..."
+        sudo apt-get autoremove -y -qq
+        sudo apt-get autoclean -qq
+        sudo apt-get clean -qq
+        sudo rm -rf /var/lib/apt/lists/*
+
+        echo "Cleaning temp and log junk..."
+        sudo rm -rf /tmp/* 2>/dev/null || true
+        sudo rm -rf /var/tmp/* 2>/dev/null || true
+        sudo journalctl --vacuum-time=7d 2>/dev/null || true
+        sudo find /var/log -type f -name "*.gz" -delete 2>/dev/null || true
+        sudo find /var/log -type f -name "*.1" -delete 2>/dev/null || true
+
+        echo "Cleaning user caches..."
+        rm -rf "$REAL_HOME/.cache/pip" 2>/dev/null || true
+        rm -rf "$REAL_HOME/.cache/composer" 2>/dev/null || true
+        rm -rf "$REAL_HOME/.cache/yarn" 2>/dev/null || true
+        rm -rf "$REAL_HOME/.npm/_npx" 2>/dev/null || true
+        rm -rf "$REAL_HOME/.bundle/cache" 2>/dev/null || true
     fi
 
     echo "Configuring PM2 for auto-startup..."
