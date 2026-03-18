@@ -37,9 +37,13 @@ sudo rm -rf /tmp/* 2>/dev/null || true
 # --- CLEANUP APT KEYRINGS & SOURCES ---
 if [[ "$(uname -s)" == "Linux" ]]; then
     echo -e "${YELLOW}Cleaning APT keyrings and sources lists...${NC}"
-    # Remove all third-party keyrings
-    sudo rm -rf /etc/apt/keyrings/
+    # Remove only keyrings that this script will recreate (selective — preserves other software keys)
     sudo mkdir -p -m 755 /etc/apt/keyrings
+    sudo rm -f /etc/apt/keyrings/docker.gpg \
+               /etc/apt/keyrings/nodesource.gpg \
+               /etc/apt/keyrings/charm.gpg \
+               /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+               /etc/apt/keyrings/ansible.gpg 2>/dev/null || true
     # Remove legacy sury key from old path
     sudo rm -f /usr/share/keyrings/deb.sury.org-php.gpg 2>/dev/null || true
     # Remove all .list files referencing third-party repos
@@ -111,21 +115,36 @@ if $IS_MACOS; then
 fi
 
 
-# Detect Real User
-if $IS_MACOS; then
-    REAL_USER=$(whoami)
-    REAL_HOME="$HOME"
+# Detect Real User (handles sudo invocation correctly)
+if [[ -n "$SUDO_USER" ]]; then
+    REAL_USER="$SUDO_USER"
 else
     REAL_USER=$(whoami)
-    REAL_HOME=$(getent passwd $REAL_USER | cut -d: -f6)
+fi
+REAL_HOME=$(getent passwd "$REAL_USER" 2>/dev/null | cut -d: -f6)
+[[ -z "$REAL_HOME" ]] && REAL_HOME="$HOME"
+
+
+# Ensure lsb-release is available before using it (Linux)
+if $IS_LINUX; then
+    if ! command -v lsb_release &>/dev/null; then
+        sudo apt-get install -y -qq lsb-release 2>/dev/null || true
+    fi
 fi
 
 
 # Detect Distro (Linux only)
 if $IS_LINUX; then
-    DISTRO_ID=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
-    DISTRO_CODENAME=$(lsb_release -cs)
-    if [[ "$DISTRO_ID" == "zorin" ]]; then DISTRO_ID="ubuntu"; fi
+    DISTRO_ID=$(lsb_release -is 2>/dev/null | tr '[:upper:]' '[:lower:]')
+    DISTRO_CODENAME=$(lsb_release -cs 2>/dev/null)
+    # Map derivative distros to their Ubuntu base codename for repository compatibility
+    if [[ "$DISTRO_ID" == "zorin" || "$DISTRO_ID" == "linuxmint" ]]; then
+        DISTRO_ID="ubuntu"
+        BASE_CODENAME=$(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release 2>/dev/null)
+        if [[ -n "$BASE_CODENAME" ]]; then
+            DISTRO_CODENAME="$BASE_CODENAME"
+        fi
+    fi
 else
     DISTRO_ID="macos"
     DISTRO_CODENAME=$(sw_vers -productVersion)
@@ -183,9 +202,9 @@ fi
 
 # Helper function to run brew as regular user (not root)
 brew_cmd() {
-    if $IS_MACOS; then
-        # Run brew as the real user, not root
-        sudo -u $REAL_USER "$BREW_PREFIX/bin/brew" "$@"
+    if [[ "$(id -u)" -eq 0 ]]; then
+        # Running as root (e.g. via sudo) — invoke brew as the real user
+        sudo -u "$REAL_USER" "$BREW_PREFIX/bin/brew" "$@"
     else
         "$BREW_PREFIX/bin/brew" "$@"
     fi

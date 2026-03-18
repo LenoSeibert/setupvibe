@@ -37,9 +37,12 @@ sudo rm -rf /tmp/* 2>/dev/null || true
 
 # --- CLEANUP APT KEYRINGS & SOURCES ---
 echo -e "${YELLOW}Cleaning APT keyrings and sources lists...${NC}"
-# Remove all third-party keyrings
-sudo rm -rf /etc/apt/keyrings/
+# Remove only keyrings that this script will recreate (selective — preserves other software keys)
 sudo mkdir -p -m 755 /etc/apt/keyrings
+sudo rm -f /etc/apt/keyrings/docker.gpg \
+           /etc/apt/keyrings/charm.gpg \
+           /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+           /etc/apt/keyrings/ansible.gpg 2>/dev/null || true
 # Remove all .list files referencing third-party repos
 sudo grep -rl 'docker\|nodesource\|charm\.sh\|cli\.github\|ansible\|codeiumdata\|windsurf\|antigravity\|pkg\.dev' \
     /etc/apt/sources.list.d/ 2>/dev/null | xargs sudo rm -f 2>/dev/null || true
@@ -89,14 +92,26 @@ declare -a STEP_STATUS
 
 
 # --- DETECT REAL USER ---
-REAL_USER=$(whoami)
-REAL_HOME="$HOME"
+if [[ -n "$SUDO_USER" ]]; then
+    REAL_USER="$SUDO_USER"
+else
+    REAL_USER=$(whoami)
+fi
+REAL_HOME=$(getent passwd "$REAL_USER" 2>/dev/null | cut -d: -f6)
+[[ -z "$REAL_HOME" ]] && REAL_HOME="$HOME"
 
 
 # --- DETECT DISTRO ---
-DISTRO_ID=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
-DISTRO_CODENAME=$(lsb_release -cs)
-if [[ "$DISTRO_ID" == "zorin" ]]; then DISTRO_ID="ubuntu"; fi
+DISTRO_ID=$(lsb_release -is 2>/dev/null | tr '[:upper:]' '[:lower:]')
+DISTRO_CODENAME=$(lsb_release -cs 2>/dev/null)
+# Map derivative distros to their Ubuntu base codename for repository compatibility
+if [[ "$DISTRO_ID" == "zorin" || "$DISTRO_ID" == "linuxmint" ]]; then
+    DISTRO_ID="ubuntu"
+    BASE_CODENAME=$(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release 2>/dev/null)
+    if [[ -n "$BASE_CODENAME" ]]; then
+        DISTRO_CODENAME="$BASE_CODENAME"
+    fi
+fi
 
 
 # --- DETECT ARCHITECTURE ---
@@ -121,7 +136,11 @@ sudo apt-get install -y figlet git lsb-release >/dev/null 2>&1 || sudo apt-get i
 # --- UI & LOGIC FUNCTIONS ---
 
 brew_cmd() {
-    "$BREW_PREFIX/bin/brew" "$@"
+    if [[ "$(id -u)" -eq 0 ]]; then
+        sudo -u "$REAL_USER" "$BREW_PREFIX/bin/brew" "$@"
+    else
+        "$BREW_PREFIX/bin/brew" "$@"
+    fi
 }
 
 header() {
