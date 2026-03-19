@@ -1017,6 +1017,7 @@ step_12() {
 
 step_13() {
     AI_TOOLS=(
+        "agentlytics"
         "@anthropic-ai/claude-code"
         "@google/gemini-cli"
         "@openai/codex"
@@ -1081,41 +1082,14 @@ step_14() {
         echo "Configuring PM2 defaults..."
         sudo -u $REAL_USER pm2 set pm2:autodump true
         sudo -u $REAL_USER pm2 set pm2:log_date_format "YYYY-MM-DD HH:mm:ss"
+
+        echo "Downloading PM2 ecosystem configuration..."
+        safe_download https://raw.githubusercontent.com/promovaweb/setupvibe/main/conf/ecosystem.config.js "$REAL_HOME/ecosystem.config.js"
+        sudo chown "$REAL_USER:$(id -gn $REAL_USER)" "$REAL_HOME/ecosystem.config.js"
+        echo -e "${GREEN}✔ PM2 defaults configured — template saved to ~/ecosystem.config.js${NC}"
     else
         echo -e "${YELLOW}⚠ PM2 not found — skipping auto-startup configuration.${NC}"
     fi
-
-    cat > "$REAL_HOME/ecosystem.config.js" << 'ECOSYSTEM'
-module.exports = {
-  apps: [
-    {
-      name: "app",
-      script: "./index.js",
-      instances: 1,
-      exec_mode: "fork",
-      watch: false,
-      ignore_watch: ["node_modules", "logs", ".git"],
-      max_memory_restart: "300M",
-      log_date_format: "YYYY-MM-DD HH:mm:ss",
-      merge_logs: true,
-      time: true,
-      autorestart: true,
-      max_restarts: 10,
-      restart_delay: 1000,
-      kill_timeout: 3000,
-      wait_ready: false,
-      env: {
-        NODE_ENV: "development",
-      },
-      env_production: {
-        NODE_ENV: "production",
-      },
-    },
-  ],
-};
-ECOSYSTEM
-    sudo chown "$REAL_USER:$(id -gn $REAL_USER)" "$REAL_HOME/ecosystem.config.js"
-    echo -e "${GREEN}✔ PM2 defaults configured — template saved to ~/ecosystem.config.js${NC}"
 }
 
 
