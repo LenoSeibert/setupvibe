@@ -1,12 +1,17 @@
 # SetupVibe
 
-> O script definitivo de configuração de ambiente de desenvolvimento multiplataforma — v0.32.0
+> O script definitivo de configuração de ambiente de desenvolvimento multiplataforma — v0.34.0
 
 ## Visão Geral
 
 **SetupVibe** é um script de configuração automatizado e abrangente que transforma seu ambiente de desenvolvimento em um workspace moderno e poderoso. Instala e configura uma stack completa de desenvolvimento em um único comando, com suporte a macOS e às principais distribuições Linux.
 
-Ideal para desenvolvedores, engenheiros de DevOps e administradores de sistemas que desejam um ambiente totalmente configurado sem a necessidade de configuração manual.
+## Principais Funcionalidades
+
+- **Elevação Inteligente:** Uso de helpers `sys_do` e `user_do` para minimizar o uso de `sudo`.
+- **Ferramentas Locais:** Binários como `ctop`, `starship`, `composer` e `go` são instalados em `$HOME/.local/bin` para manter o sistema limpo.
+- **Manutenção Automática:** Executa `brew upgrade` automaticamente para garantir que todas as ferramentas existentes estejam atualizadas.
+- **Tmux Otimizado:** Numeração de janelas e painéis começando em 1 para atalhos de teclado mais naturais, com renumeração automática ao fechar janelas.
 
 ## Requisitos do Sistema
 

@@ -1,12 +1,17 @@
 # SetupVibe
 
-> The ultimate cross-platform development environment setup script — v0.32.0
+> The ultimate cross-platform development environment setup script — v0.34.0
 
 ## Overview
 
 **SetupVibe** is a comprehensive, automated setup script that transforms your development environment into a powerful, modern workspace. It installs and configures a complete development stack in one command, supporting macOS and major Linux distributions.
 
-Perfect for developers, DevOps engineers, and system administrators who want a fully configured environment without the hassle of manual setup.
+## Key Features
+
+- **Smarter Elevation:** Smart use of `sys_do` and `user_do` helpers to minimize `sudo` usage.
+- **Local Tooling:** Binaries like `ctop`, `starship`, `composer`, and `go` are installed in `$HOME/.local/bin` to keep your system clean.
+- **Package Maintenance:** Automatically runs `brew upgrade` to ensure all existing tools are up-to-date.
+- **Enhanced Tmux:** Window and pane numbering starts at 1 for more natural keyboard shortcuts, with automatic renumbering on close.
 
 ## System Requirements
 

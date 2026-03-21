@@ -1,8 +1,16 @@
 # SetupVibe
 
-> The ultimate cross-platform development environment setup script — v0.32.0
+> The ultimate cross-platform development environment setup script — v0.34.0
 
 Installs and configures a complete development stack in one command, supporting macOS and major Linux distributions.
+
+## Key Features
+
+- **Smart Privilege Elevation:** Uses `sudo` only where strictly necessary; most tools are installed in `$HOME/.local/bin`.
+- **Auto-Update:** Automatically upgrades existing Homebrew packages during setup.
+- **Modern Shell:** ZSH + Oh My Zsh + Starship with a curated set of plugins and aliases.
+- **Optimized Tmux:** Pre-configured with TPM, intuitive keybindings, and window/pane numbering starting at 1.
+- **AI-Ready:** Includes the latest AI CLI tools for developers.
 
 ## Documentation
 
