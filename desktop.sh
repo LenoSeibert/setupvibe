@@ -728,8 +728,8 @@ step_6() {
         echo "Installing pnpm..."
         user_do npm install -g pnpm npm@latest
         
-        echo "Installing PM2..."
-        user_do npm install -g pm2
+        echo "Installing PM2 & n8n..."
+        user_do npm install -g pm2 @n8n/cli
 
         echo "Setup Bun..."
         user_do curl -fsSL https://bun.sh/install | bash
@@ -750,8 +750,8 @@ step_6() {
 
         user_do npm install -g pnpm npm@latest
 
-        echo "Installing PM2..."
-        user_do npm install -g pm2
+        echo "Installing PM2 & n8n..."
+        user_do npm install -g pm2 @n8n/cli
 
         echo "Setup Bun..."
         user_do bash -c "curl -fsSL https://bun.sh/install | bash"
