@@ -522,8 +522,8 @@ step_6() {
     echo "Installing TPM (Tmux Plugin Manager)..."
     git_ensure "https://github.com/tmux-plugins/tpm" "$REAL_HOME/.tmux/plugins/tpm"
 
-    echo "Downloading tmux.conf..."
-    safe_download https://raw.githubusercontent.com/promovaweb/setupvibe/main/conf/tmux.conf "$REAL_HOME/.tmux.conf"
+    echo "Downloading tmux-server.conf..."
+    safe_download https://raw.githubusercontent.com/promovaweb/setupvibe/main/conf/tmux-server.conf "$REAL_HOME/.tmux.conf"
 
     # Also install to /root if running as root with a different REAL_HOME
     if [[ "$(id -u)" -eq 0 && "$REAL_HOME" != "/root" ]]; then

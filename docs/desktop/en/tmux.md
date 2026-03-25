@@ -1,8 +1,8 @@
 # Tmux Guide
 
-SetupVibe installs and configures tmux with [TPM](https://github.com/tmux-plugins/tpm) and a curated plugin set. Configuration lives in [`conf/tmux.conf`](../../../conf/tmux.conf) and is downloaded automatically during setup.
+SetupVibe installs and configures tmux with [TPM](https://github.com/tmux-plugins/tpm) and a curated plugin set. The Desktop edition uses [`conf/tmux-desktop.conf`](../../../conf/tmux-desktop.conf), downloaded automatically during setup.
 
-This guide applies to both the Desktop and Server editions — both receive the same `tmux.conf`.
+The Server edition uses a leaner [`conf/tmux-server.conf`](../../../conf/tmux-server.conf) — same keybindings, but without the `docker`, `mise`, and `tmux-open` plugins, and with a simplified status bar (`git · cwd` on the left).
 
 ---
 
@@ -328,12 +328,21 @@ Highlights the status bar when the prefix key is active, in copy mode, or in syn
 
 #### [2KAbhishek/tmux2k](https://github.com/2KAbhishek/tmux2k)
 
+**Desktop** (`tmux-desktop.conf`):
+
 | Position | Widgets                            |
 | -------- | ---------------------------------- |
 | Left     | `git` · `cwd` · `docker` · `mise`  |
 | Right    | `cpu` · `ram` · `network` · `time` |
 
-**Theme:** `onedark` with powerline separators.
+**Server** (`tmux-server.conf`):
+
+| Position | Widgets                            |
+| -------- | ---------------------------------- |
+| Left     | `git` · `cwd`                      |
+| Right    | `cpu` · `ram` · `network` · `time` |
+
+**Theme:** `onedark` with powerline separators on both editions.
 
 ---
 

@@ -108,7 +108,7 @@ Paquets APT :
 ### Étape 6 — Tmux et Plugins
 
 - Clone [TPM](https://github.com/tmux-plugins/tpm) vers `~/.tmux/plugins/tpm`
-- Télécharge [`conf/tmux.conf`](../../../conf/tmux.conf) vers `~/.tmux.conf`
+- Télécharge [`conf/tmux-server.conf`](../../../conf/tmux-server.conf) vers `~/.tmux.conf`
 - Si exécuté en root avec un `REAL_HOME` non-root, installe aussi dans `/root/.tmux.conf`
 - Arrête toute session tmux en cours pour appliquer la nouvelle config
 

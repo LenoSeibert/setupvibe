@@ -143,7 +143,7 @@ Installed via Homebrew on both platforms. On Linux, Bruno is installed via snap.
 ### Step 12 — Tmux & Plugins
 
 - Clones [TPM](https://github.com/tmux-plugins/tpm) to `~/.tmux/plugins/tpm`
-- Downloads [`conf/tmux.conf`](../../../conf/tmux.conf) to `~/.tmux.conf`
+- Downloads [`conf/tmux-desktop.conf`](../../../conf/tmux-desktop.conf) to `~/.tmux.conf`
 - Kills any running tmux session to apply the new config
 
 Press `prefix + I` inside tmux to install all plugins. See [tmux.md](tmux.md) for the full plugin and keybinding reference.

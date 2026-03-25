@@ -1,8 +1,8 @@
 # Guide Tmux
 
-SetupVibe installe et configure tmux avec [TPM](https://github.com/tmux-plugins/tpm) et un ensemble de plugins sélectionnés. La configuration se trouve dans [`conf/tmux.conf`](../../../conf/tmux.conf) et est téléchargée automatiquement lors de l'installation.
+SetupVibe installe et configure tmux avec [TPM](https://github.com/tmux-plugins/tpm) et un ensemble de plugins sélectionnés. L'édition Desktop utilise [`conf/tmux-desktop.conf`](../../../conf/tmux-desktop.conf), téléchargée automatiquement lors de l'installation.
 
-Ce guide s'applique aux éditions Desktop et Server — les deux reçoivent le même `tmux.conf`.
+L'édition Server utilise une [`conf/tmux-server.conf`](../../../conf/tmux-server.conf) plus légère — mêmes raccourcis, mais sans les plugins `docker`, `mise` et `tmux-open`, et avec une barre de statut simplifiée (`git · cwd` à gauche).
 
 ---
 
@@ -328,12 +328,21 @@ Met en évidence la barre de statut quand le préfixe est actif, en mode copie o
 
 #### [2KAbhishek/tmux2k](https://github.com/2KAbhishek/tmux2k)
 
+**Desktop** (`tmux-desktop.conf`) :
+
 | Position | Widgets                            |
 | -------- | ---------------------------------- |
 | Gauche   | `git` · `cwd` · `docker` · `mise`  |
 | Droite   | `cpu` · `ram` · `network` · `time` |
 
-**Thème :** `onedark` avec séparateurs powerline.
+**Server** (`tmux-server.conf`) :
+
+| Position | Widgets                            |
+| -------- | ---------------------------------- |
+| Gauche   | `git` · `cwd`                      |
+| Droite   | `cpu` · `ram` · `network` · `time` |
+
+**Thème :** `onedark` avec séparateurs powerline dans les deux éditions.
 
 ---
 

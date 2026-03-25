@@ -143,7 +143,7 @@ Installés via Homebrew sur les deux plateformes. Sur Linux, Bruno est installé
 ### Étape 12 — Tmux et Plugins
 
 - Clone [TPM](https://github.com/tmux-plugins/tpm) vers `~/.tmux/plugins/tpm`
-- Télécharge [`conf/tmux.conf`](../../../conf/tmux.conf) vers `~/.tmux.conf`
+- Télécharge [`conf/tmux-desktop.conf`](../../../conf/tmux-desktop.conf) vers `~/.tmux.conf`
 - Arrête toute session tmux en cours pour appliquer la nouvelle config
 
 Appuyez sur `prefix + I` dans tmux pour installer tous les plugins. Voir [tmux.md](tmux.md) pour la référence complète des plugins et des raccourcis clavier.
