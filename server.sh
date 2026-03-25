@@ -564,7 +564,6 @@ step_7() {
     fi
 
     AI_TOOLS=(
-        "pm2"
         "@anthropic-ai/claude-code"
         "@google/gemini-cli"
         "@openai/codex"
@@ -594,51 +593,6 @@ step_8() {
     rm -rf "$REAL_HOME/.cache/composer" 2>/dev/null || true
     rm -rf "$REAL_HOME/.npm/_npx" 2>/dev/null || true
     rm -rf "$REAL_HOME/.bundle/cache" 2>/dev/null || true
-
-    echo "Configuring PM2 for auto-startup..."
-    if command -v pm2 &>/dev/null; then
-        user_do pm2 startup systemd -u $REAL_USER --hp $REAL_HOME
-        user_do pm2 save
-        echo -e "${GREEN}✔ PM2 configured for auto-startup${NC}"
-
-        echo "Configuring PM2 defaults..."
-        user_do pm2 set pm2:autodump true
-        user_do pm2 set pm2:log_date_format "YYYY-MM-DD HH:mm:ss"
-    else
-        echo -e "${YELLOW}⚠ PM2 not found — skipping auto-startup configuration.${NC}"
-    fi
-
-    cat > "$REAL_HOME/ecosystem.config.js" << 'ECOSYSTEM'
-module.exports = {
-  apps: [
-    {
-      name: "app",
-      script: "./index.js",
-      instances: 1,
-      exec_mode: "fork",
-      watch: false,
-      ignore_watch: ["node_modules", "logs", ".git"],
-      max_memory_restart: "300M",
-      log_date_format: "YYYY-MM-DD HH:mm:ss",
-      merge_logs: true,
-      time: true,
-      autorestart: true,
-      max_restarts: 10,
-      restart_delay: 1000,
-      kill_timeout: 3000,
-      wait_ready: false,
-      env: {
-        NODE_ENV: "development",
-      },
-      env_production: {
-        NODE_ENV: "production",
-      },
-    },
-  ],
-};
-ECOSYSTEM
-    sys_do chown "$REAL_USER:$(id -gn $REAL_USER)" "$REAL_HOME/ecosystem.config.js"
-    echo -e "${GREEN}✔ PM2 defaults configured — template saved to ~/ecosystem.config.js${NC}"
 }
 
 

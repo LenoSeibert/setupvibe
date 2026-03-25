@@ -114,37 +114,25 @@ Pacotes APT:
 
 Pressione `prefix + I` dentro do tmux para instalar todos os plugins. Consulte o [Guia do Tmux](../../desktop/pt-br/tmux.md) para a referência completa de plugins e atalhos.
 
-### Etapa 7 — Ferramentas de IA via CLI
+### Passo 7 — Ferramentas de IA CLI
 
-Instala o **Node.js 24** via repositório APT NodeSource, depois instala globalmente via `npm install -g`:
+Instala o **Node.js 24** via repositório NodeSource APT, e então instala globalmente via `npm install -g`:
 
 | Ferramenta         | Pacote                           |
 | ------------------ | -------------------------------- |
-| PM2                | `pm2`                            |
 | Claude Code        | `@anthropic-ai/claude-code`      |
 | Gemini CLI         | `@google/gemini-cli`             |
 | OpenAI Codex       | `@openai/codex`                  |
 | GitHub Copilot CLI | `@githubnext/github-copilot-cli` |
 
-Pacotes globais do npm são instalados em `~/.npm-global` (configurado com `npm config set prefix`) quando não executado como root.
+Os pacotes globais do npm são instalados em `~/.npm-global` (configurado com `npm config set prefix`) quando não está rodando como root.
 
-### Etapa 8 — Finalização e Limpeza
+### Passo 8 — Finalização e Limpeza
 
 - APT: `autoremove`, `autoclean`, `clean`, remove `/var/lib/apt/lists/*`
 - Remove arquivos temporários: `/tmp/ctop`, `/tmp/starship`
 - Limpa logs do journal com mais de 7 dias
 - Limpa caches do usuário: `~/.cache/pip`, `~/.npm/_npx`, `~/.bundle/cache`, `~/.cache/composer`
-- Configura a **inicialização automática do PM2** via systemd (`pm2 startup systemd`)
-- Executa `pm2 save` e define `pm2:autodump true`
-- Escreve um template padrão `~/ecosystem.config.js`
-
----
-
-## PM2
-
-O PM2 é configurado para iniciar automaticamente no boot via systemd. Um `~/ecosystem.config.js` padrão é gerado durante a configuração.
-
-Consulte o [Guia do PM2](../../desktop/pt-br/pm2.md) para a referência completa de comandos e configurações.
 
 ---
 

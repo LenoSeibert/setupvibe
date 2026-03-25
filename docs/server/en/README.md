@@ -120,7 +120,6 @@ Installs **Node.js 24** via NodeSource APT repo, then installs globally via `npm
 
 | Tool               | Package                          |
 | ------------------ | -------------------------------- |
-| PM2                | `pm2`                            |
 | Claude Code        | `@anthropic-ai/claude-code`      |
 | Gemini CLI         | `@google/gemini-cli`             |
 | OpenAI Codex       | `@openai/codex`                  |
@@ -134,17 +133,6 @@ npm global packages are installed to `~/.npm-global` (configured with `npm confi
 - Removes temp files: `/tmp/ctop`, `/tmp/starship`
 - Vacuums journal logs older than 7 days
 - Clears user caches: `~/.cache/pip`, `~/.npm/_npx`, `~/.bundle/cache`, `~/.cache/composer`
-- Configures **PM2 auto-startup** via systemd (`pm2 startup systemd`)
-- Runs `pm2 save` and sets `pm2:autodump true`
-- Writes a default `~/ecosystem.config.js` template
-
----
-
-## PM2
-
-PM2 is configured to start automatically on boot via systemd. A default `~/ecosystem.config.js` is generated during setup.
-
-See the [PM2 Guide](../../desktop/en/pm2.md) for the full command and configuration reference.
 
 ---
 

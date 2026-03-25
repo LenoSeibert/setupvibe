@@ -1,9 +1,9 @@
 # Guide PM2
 
-SetupVibe installe [PM2](https://pm2.keymetrics.io/) globalement et le configure pour un démarrage automatique sur les éditions Desktop et Server.
+SetupVibe installe [PM2](https://pm2.keymetrics.io/) globalement et le configure pour un démarrage automatique sur l'édition Desktop.
 
-- **Desktop :** démarrage automatique via launchd (macOS) ou systemd (Linux) ; télécharge `ecosystem.config.js` depuis le dépôt vers `~/ecosystem.config.js`
-- **Server :** démarrage automatique via systemd ; génère un `ecosystem.config.js` par défaut dans `~/ecosystem.config.js`
+- **macOS :** démarrage automatique via launchd ; télécharge `ecosystem.config.js` depuis le dépôt vers `~/ecosystem.config.js`
+- **Linux :** démarrage automatique via systemd ; télécharge `ecosystem.config.js` depuis le dépôt vers `~/ecosystem.config.js`
 
 ---
 

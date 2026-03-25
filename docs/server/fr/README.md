@@ -114,37 +114,25 @@ Paquets APT :
 
 Appuyez sur `prefix + I` dans tmux pour installer tous les plugins. Voir le [Guide Tmux](../../desktop/fr/tmux.md) pour la référence complète des plugins et raccourcis.
 
-### Étape 7 — Outils IA CLI
+### Étape 7 — Outils CLI IA
 
 Installe **Node.js 24** via le dépôt APT NodeSource, puis installe globalement via `npm install -g` :
 
-| Outil              | Paquet                           |
+| Outil               | Paquet                           |
 | ------------------ | -------------------------------- |
-| PM2                | `pm2`                            |
 | Claude Code        | `@anthropic-ai/claude-code`      |
 | Gemini CLI         | `@google/gemini-cli`             |
 | OpenAI Codex       | `@openai/codex`                  |
 | GitHub Copilot CLI | `@githubnext/github-copilot-cli` |
 
-Les paquets npm globaux sont installés dans `~/.npm-global` (configuré avec `npm config set prefix`) quand on n'est pas root.
+Les paquets globaux npm sont installés dans `~/.npm-global` (configuré avec `npm config set prefix`) lorsqu'il n'est pas exécuté en tant que root.
 
-### Étape 8 — Finalisation et Nettoyage
+### Étape 8 — Finalisation & Nettoyage
 
 - APT : `autoremove`, `autoclean`, `clean`, supprime `/var/lib/apt/lists/*`
 - Supprime les fichiers temporaires : `/tmp/ctop`, `/tmp/starship`
-- Nettoie les logs journal de plus de 7 jours
-- Vide les caches : `~/.cache/pip`, `~/.npm/_npx`, `~/.bundle/cache`, `~/.cache/composer`
-- Configure le **démarrage automatique de PM2** via systemd (`pm2 startup systemd`)
-- Exécute `pm2 save` et définit `pm2:autodump true`
-- Écrit un modèle `~/ecosystem.config.js` par défaut
-
----
-
-## PM2
-
-PM2 est configuré pour démarrer automatiquement au boot via systemd. Un `~/ecosystem.config.js` par défaut est généré lors de l'installation.
-
-Voir le [Guide PM2](../../desktop/fr/pm2.md) pour la référence complète des commandes et de la configuration.
+- Nettoie les journaux journalctl de plus de 7 jours
+- Efface les caches utilisateur : `~/.cache/pip`, `~/.npm/_npx`, `~/.bundle/cache`, `~/.cache/composer`
 
 ---
 

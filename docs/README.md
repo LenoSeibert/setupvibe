@@ -43,7 +43,7 @@ curl -sL https://raw.githubusercontent.com/promovaweb/setupvibe/refs/heads/main/
 | Nerd Fonts (FiraCode, JetBrains Mono) | ✔              | ✗       |
 | Tmux + TPM plugins                    | ✔              | ✔       |
 | AI CLI tools                          | ✔              | ✔       |
-| PM2 auto-startup                      | ✔              | ✔       |
+| PM2 auto-startup                      | ✔              | ✗       |
 
 ## Specialized Guides
 
