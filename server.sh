@@ -25,7 +25,7 @@ NC='\033[0m' # No Color
 
 
 # --- VERSION ---
-VERSION="0.35.0"
+VERSION="0.36.0"
 INSTALL_URL="https://server.setupvibe.dev"
 
 echo -e "${CYAN}SetupVibe Server Edition v${VERSION}${NC}"
@@ -368,9 +368,14 @@ step_1() {
         build-essential git wget unzip fontconfig curl sshpass \
         libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev \
         libncurses5-dev xz-utils libffi-dev liblzma-dev \
-        libyaml-dev autoconf procps file tmux \
+        libyaml-dev autoconf procps file tmux fzf \
         python3 python3-pip python3-venv python-is-python3 \
         cron logrotate rsyslog
+
+    echo "Installing zoxide..."
+    if ! command -v zoxide &>/dev/null; then
+        curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | user_do sh
+    fi
 
     echo "Setup uv (Python Package Manager)..."
     if ! user_do bash -c "export PATH=\$HOME/.local/bin:\$PATH; command -v uv" &> /dev/null; then

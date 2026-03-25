@@ -16,7 +16,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="" # Disabled because Starship handles it
 
 # Plugins
-plugins=(git rsync nmap cp extract zoxide fzf zsh-autosuggestions zsh-syntax-highlighting tmux brew gh ansible docker docker-compose)
+plugins=(git rsync nmap cp extract zoxide fzf zsh-autosuggestions zsh-syntax-highlighting tmux gh ansible docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
