@@ -525,6 +525,7 @@ step_5() {
 
     echo "Applying Starship Preset: Gruvbox Rainbow..."
     user_do starship preset gruvbox-rainbow -o "$REAL_HOME/.config/starship.toml"
+    sed -i 's/╭/┌/g; s/╰/└/g' "$REAL_HOME/.config/starship.toml"
 
     # Server ZSHRC
     safe_download https://raw.githubusercontent.com/promovaweb/setupvibe/main/conf/zshrc-server.zsh "$REAL_HOME/.zshrc"

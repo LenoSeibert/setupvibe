@@ -986,6 +986,7 @@ step_11() {
 
         echo "Applying Starship Preset: Gruvbox Rainbow..."
         user_do starship preset gruvbox-rainbow -o "$REAL_HOME/.config/starship.toml"
+        perl -i -pe 's/╭/┌/g; s/╰/└/g; s/\x{e0b6}/\x{e0b2}/g; s/\x{e0b4}/\x{e0b0}/g' "$REAL_HOME/.config/starship.toml"
 
         # macOS ZSHRC
         safe_download https://raw.githubusercontent.com/promovaweb/setupvibe/main/conf/zshrc-macos.zsh "$REAL_HOME/.zshrc"
@@ -1019,7 +1020,7 @@ step_11() {
 
         echo "Applying Starship Preset: Gruvbox Rainbow..."
         user_do starship preset gruvbox-rainbow -o "$REAL_HOME/.config/starship.toml"
-
+        perl -i -pe 's/╭/┌/g; s/╰/└/g; s/\x{e0b6}/\x{e0b2}/g; s/\x{e0b4}/\x{e0b0}/g' "$REAL_HOME/.config/starship.toml"
 
         # Linux ZSHRC
         safe_download https://raw.githubusercontent.com/promovaweb/setupvibe/main/conf/zshrc-linux.zsh "$REAL_HOME/.zshrc"
