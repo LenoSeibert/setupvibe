@@ -1,6 +1,6 @@
 # SetupVibe — Desktop Edition
 
-> Cross-platform development environment setup — v0.40.0
+> Cross-platform development environment setup — v0.41.0
 
 Installs and configures a complete developer stack in one command. Supports macOS and major Linux distributions.
 
@@ -90,6 +90,7 @@ The script shows an interactive roadmap and asks for confirmation before startin
 | Tool              | macOS                            | Linux                                                                        |
 | ----------------- | -------------------------------- | ---------------------------------------------------------------------------- |
 | Docker            | Docker Desktop via Homebrew Cask | docker-ce + docker-compose-plugin + docker-buildx-plugin via Docker APT repo |
+| Portainer         | via Docker Compose in `~/.setupvibe` | same |
 | Ansible           | via Homebrew                     | via ansible/ansible PPA (Ubuntu) or ansible-core (Debian)                    |
 | GitHub CLI (`gh`) | via Homebrew                     | via GitHub APT repo                                                          |
 

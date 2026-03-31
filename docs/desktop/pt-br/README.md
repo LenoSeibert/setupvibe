@@ -1,6 +1,6 @@
 # SetupVibe — Edição Desktop
 
-> Configuração de ambiente de desenvolvimento multiplataforma — v0.40.0
+> Configuração de ambiente de desenvolvimento multiplataforma — v0.41.0
 
 Instala e configura um stack de desenvolvedor completo em um comando. Suporta macOS e as principais distribuições Linux.
 
@@ -87,11 +87,13 @@ O script exibe um roteiro interativo e solicita confirmação antes de iniciar. 
 
 ### Etapa 7 — DevOps
 
-| Ferramenta          | macOS                            | Linux                                                                        |
-| ------------------- | -------------------------------- | ---------------------------------------------------------------------------- |
-| Docker              | Docker Desktop via Homebrew Cask | docker-ce + docker-compose-plugin + docker-buildx-plugin via repositório APT do Docker |
-| Ansible             | via Homebrew                     | via PPA ansible/ansible (Ubuntu) ou ansible-core (Debian)                    |
-| GitHub CLI (`gh`)   | via Homebrew                     | via repositório APT do GitHub                                                |
+| Ferramenta         | macOS                            | Linux                                                                        |
+| ------------------ | -------------------------------- | ---------------------------------------------------------------------------- |
+| Docker             | Docker Desktop via Homebrew Cask | docker-ce + docker-compose-plugin + docker-buildx-plugin via Docker APT repo |
+| Portainer          | via Docker Compose em `~/.setupvibe` | mesmo |
+| Ansible            | via Homebrew                     | via PPA ansible/ansible (Ubuntu) ou ansible-core (Debian)                    |
+| GitHub CLI (`gh`)  | via Homebrew                     | via repositório APT do GitHub                                                |
+
 
 ### Etapa 8 — Ferramentas Unix Modernas
 

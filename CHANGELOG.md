@@ -6,6 +6,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [v0.41.0] - 2026-03-31
+
+### Added
+
+- Portainer installation added to Desktop Edition (Step 7)
+- Docker Compose for Portainer created in `conf/portainer-compose.yml`
+- Automated deployment of Portainer in `~/.setupvibe/` directory
+
+---
+
 ## [v0.40.0] - 2026-03-31
 
 ### Added

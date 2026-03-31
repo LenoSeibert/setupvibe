@@ -24,7 +24,7 @@ NC='\033[0m' # No Color
 
 
 # --- VERSION ---
-VERSION="0.40.0"
+VERSION="0.41.0"
 INSTALL_URL="https://desktop.setupvibe.dev"
 
 echo -e "${CYAN}SetupVibe Desktop v${VERSION}${NC}"
@@ -814,6 +814,22 @@ step_7() {
         sys_do chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg
         echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sys_do tee /etc/apt/sources.list.d/github-cli.list > /dev/null
         sys_do apt-get update -qq && sys_do apt-get install -y gh
+    fi
+
+    # Portainer Setup (Both macOS & Linux)
+    echo "Configuring Portainer..."
+    user_do mkdir -p "$REAL_HOME/.setupvibe/portainer_data"
+    safe_download https://raw.githubusercontent.com/promovaweb/setupvibe/main/conf/portainer-compose.yml "$REAL_HOME/.setupvibe/portainer-compose.yml"
+    sys_do chown -R "$REAL_USER:$(id -gn $REAL_USER)" "$REAL_HOME/.setupvibe"
+
+    # Try to start Portainer if docker is running
+    if command -v docker &>/dev/null && docker info &>/dev/null; then
+        echo "Starting Portainer..."
+        user_do docker compose -f "$REAL_HOME/.setupvibe/portainer-compose.yml" up -d
+        echo -e "${GREEN}✔ Portainer is running at http://localhost:9000 and https://localhost:9443${NC}"
+    else
+        echo -e "${YELLOW}⚠ Docker is not running. Portainer will be ready to start later with:${NC}"
+        echo -e "${CYAN}  docker compose -f ~/.setupvibe/portainer-compose.yml up -d${NC}"
     fi
 }
 
