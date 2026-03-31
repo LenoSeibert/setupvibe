@@ -11,6 +11,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Automation for version bumping and consistency across documentation and scripts
+- New `npx skills` aliases (`skl`, `skf`, `ska`, `sku`, `skun`, `skc`) in all ZSH configuration files
+- Documentation updated to include the new Skills CLI aliases
 
 ---
 

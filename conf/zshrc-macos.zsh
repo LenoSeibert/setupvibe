@@ -43,6 +43,14 @@ if command -v starship >/dev/null; then eval "$(starship init zsh)"; fi
 alias ge="gemini --approval-mode=yolo"                                        # Gemini CLI sem confirmações
 alias cc="claude --permission-mode=auto --dangerously-skip-permissions"        # Claude CLI sem confirmações
 
+# --- Skills CLI ---
+alias skl="npx skills list"                     # Lista todas as skills instaladas
+alias skf="npx skills find"                     # Busca skills no registro (ex: skf react)
+alias ska="npx skills add"                      # Instala uma nova skill (ex: ska owner/repo)
+alias sku="npx skills update"                   # Atualiza todas as skills instaladas
+alias skun="npx skills remove"                  # Remove uma skill instalada (ex: skun nome)
+alias skc="npx skills check"                    # Verifica atualizações disponíveis
+
 # --- Shell ---
 alias zconfig="nano ~/.zshrc"                   # Edita o arquivo de configuração do ZSH
 alias reload="source ~/.zshrc"                  # Recarrega as configurações do ZSH sem reiniciar o terminal

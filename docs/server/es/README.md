@@ -102,9 +102,14 @@ Paquetes APT:
 | `reload`       | `source ~/.zshrc`                     |
 | `zconfig`      | `nano ~/.zshrc`                       |
 | `update`       | `sudo apt update && sudo apt upgrade` |
-| `ge`           | `gemini --approval-mode=yolo`         |
+| `ge`           | `gemini --approval-mode=yolo`                                  |
 | `cc`           | `claude --permission-mode=auto --dangerously-skip-permissions` |
-| `d`            | `docker`                              |
+| `skl`          | `npx skills list`                                              |
+| `skf`          | `npx skills find`                                              |
+| `ska`          | `npx skills add`                                               |
+| `sku`          | `npx skills update`                                            |
+| `d`            | `docker`                                                       |
+
 | `dc`           | `docker compose`                      |
 | `syslog`       | `sudo journalctl -f`                  |
 | `ports`        | `ss -tulnp`                           |

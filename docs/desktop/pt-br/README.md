@@ -188,9 +188,14 @@ Cada plataforma recebe um `.zshrc` dedicado:
 | `zconfig`  | `nano ~/.zshrc`                                                                            |
 | `update`   | `brew update && brew upgrade` (macOS) / `sudo apt update && sudo apt upgrade` (Linux)      |
 | `brewup`   | `brew update && brew upgrade && brew cleanup`                                              |
-| `ge`       | `gemini --approval-mode=yolo`                                                              |
-| `cc`       | `claude --permission-mode=auto --dangerously-skip-permissions`                             |
-| `d`        | `docker`                                                                                   |
+| `ge`       | `gemini --approval-mode=yolo`                                                                 |
+| `cc`       | `claude --permission-mode=auto --dangerously-skip-permissions`                                |
+| `skl`      | `npx skills list`                                                                             |
+| `skf`      | `npx skills find`                                                                             |
+| `ska`      | `npx skills add`                                                                              |
+| `sku`      | `npx skills update`                                                                           |
+| `d`        | `docker`                                                                                      |
+
 | `dc`       | `docker compose`                                                                           |
 | `art`      | `php artisan`                                                                              |
 | `syslog`   | `sudo journalctl -f` *(somente Linux)*                                                     |

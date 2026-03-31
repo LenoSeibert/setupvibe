@@ -190,6 +190,10 @@ Each platform gets a dedicated `.zshrc`:
 | `brewup`   | `brew update && brew upgrade && brew cleanup`                                         |
 | `ge`       | `gemini --approval-mode=yolo`                                                         |
 | `cc`       | `claude --permission-mode=auto --dangerously-skip-permissions`                        |
+| `skl`      | `npx skills list`                                                                     |
+| `skf`      | `npx skills find`                                                                     |
+| `ska`      | `npx skills add`                                                                      |
+| `sku`      | `npx skills update`                                                                   |
 | `d`        | `docker`                                                                              |
 | `dc`       | `docker compose`                                                                      |
 | `art`      | `php artisan`                                                                         |
