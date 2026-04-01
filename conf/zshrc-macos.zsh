@@ -39,6 +39,9 @@ if command -v starship >/dev/null; then eval "$(starship init zsh)"; fi
 
 # 5. ALIASES
 
+# --- SetupVibe ---
+alias setupvibe="curl -sSL desktop.setupvibe.dev | bash"                      # Reinstala ou atualiza o SetupVibe Desktop
+
 # --- AI CLIs ---
 alias ge="gemini --approval-mode=yolo"                                        # Gemini CLI sem confirmações
 alias cc="claude --permission-mode=auto --dangerously-skip-permissions"        # Claude CLI sem confirmações

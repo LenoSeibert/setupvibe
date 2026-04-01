@@ -9,6 +9,14 @@ Esta es la lista exhaustiva de todos los aliases configurados por SetupVibe en t
 
 ---
 
+## SetupVibe
+
+- **`setupvibe`**
+  - Disponibilidad: 🌐 Ambos
+  - Comando: `curl -sSL desktop.setupvibe.dev | bash` (Desktop) / `curl -sSL server.setupvibe.dev | bash` (Server)
+  - Descripción: Reinstala o actualiza SetupVibe.
+  - Ejemplo: `setupvibe`
+
 ## AI CLIs
 
 - **`ge`**

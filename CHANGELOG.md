@@ -6,6 +6,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [v0.41.2] - 2026-03-31
+
+### Added
+
+- New `setupvibe` alias in all ZSH configuration files to easily reinstall or update the environment
+- Documentation for the `setupvibe` alias in all supported languages
+
+---
+
 ## [v0.41.1] - 2026-03-31
 
 ### Added
