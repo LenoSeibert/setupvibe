@@ -1,6 +1,6 @@
 # SetupVibe Documentation
 
-> Automated development environment setup — v0.41.2
+> Automated development environment setup — v0.41.3
 
 SetupVibe transforms any fresh machine into a fully configured development workspace in one command. It supports two editions depending on your target:
 
@@ -67,6 +67,13 @@ curl -sSL server.setupvibe.dev | bash -s -- --manager
 - [Portuguese](desktop/pt-br/pm2.md)
 - [French](desktop/fr/pm2.md)
 - [Spanish](desktop/es/pm2.md)
+
+### Cronboard
+
+- [English](desktop/en/cronboard.md)
+- [Portuguese](desktop/pt-br/cronboard.md)
+- [French](desktop/fr/cronboard.md)
+- [Spanish](desktop/es/cronboard.md)
 
 ---
 

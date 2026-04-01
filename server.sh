@@ -25,7 +25,7 @@ NC='\033[0m' # No Color
 
 
 # --- VERSION ---
-VERSION="0.41.2"
+VERSION="0.41.3"
 INSTALL_URL="https://server.setupvibe.dev"
 
 # --- ARGUMENT PARSING ---
@@ -397,6 +397,11 @@ step_1() {
         user_do bash -c "export PATH=\$HOME/.local/bin:\$PATH; uv self update"
     fi
     export PATH="$REAL_HOME/.local/bin:$PATH"
+
+    echo "Installing Cronboard (Cron TUI)..."
+    if ! user_do bash -c "export PATH=\$HOME/.local/bin:\$PATH; command -v cronboard" &> /dev/null; then
+        user_do bash -c "export PATH=\$HOME/.local/bin:\$PATH; uv tool install cronboard"
+    fi
 }
 
 

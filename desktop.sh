@@ -24,7 +24,7 @@ NC='\033[0m' # No Color
 
 
 # --- VERSION ---
-VERSION="0.41.2"
+VERSION="0.41.3"
 INSTALL_URL="https://desktop.setupvibe.dev"
 
 echo -e "${CYAN}SetupVibe Desktop v${VERSION}${NC}"
@@ -678,11 +678,14 @@ step_5() {
         
         echo "Setup Rust..."
         if ! command -v rustup &> /dev/null; then
-            user_do curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+            user_do curl --proto \'=https\' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
             source "$HOME/.cargo/env"
         else
             user_do rustup update
         fi
+
+        echo "Installing Cronboard (Cron TUI)..."
+        brew_cmd install cronboard
     else
         echo "Setup Python..."
         sys_do apt-get install -y python3 python3-pip python3-venv python-is-python3
@@ -707,11 +710,16 @@ step_5() {
 
         echo "Setup Rust..."
         if [ ! -f "$REAL_HOME/.cargo/bin/rustup" ]; then
-            user_do sh -c "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
+            user_do sh -c "curl --proto \'=https\' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
         else
             user_do bash -c "export PATH=\$HOME/.cargo/bin:\$PATH; rustup update"
         fi
         export PATH="$REAL_HOME/.cargo/bin:$PATH"
+
+        echo "Installing Cronboard (Cron TUI)..."
+        if ! user_do bash -c "export PATH=\$HOME/.local/bin:\$PATH; command -v cronboard" &> /dev/null; then
+            user_do bash -c "export PATH=\$HOME/.local/bin:\$PATH; uv tool install cronboard"
+        fi
     fi
 }
 

@@ -1431,6 +1431,14 @@ Voici la liste exhaustive de tous les aliases configurés par SetupVibe sur tout
   - Description : Collecte les facts de tous les hôtes de l'inventaire.
   - Exemple : `anfacts`
 
+### Cron & Planification
+
+- **`cronb`**
+  - Disponibilité : 🌐 Les deux
+  - Commande : `cronboard`
+  - Description : Ouvre le tableau de bord Cronboard TUI pour gérer les tâches cron.
+  - Exemple : `cronb`
+
 ### Surveillance & Processus
 - **`topc`**
   - Disponibilité : 🌐 Les deux

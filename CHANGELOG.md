@@ -6,6 +6,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [v0.41.3] - 2026-04-01
+
+### Added
+
+- `Cronboard` (Cron TUI) added to both Desktop and Server editions
+- New `cronb` alias to quickly open the Cronboard dashboard
+- Comprehensive documentation for Cronboard in all supported languages
+
+---
+
 ## [v0.41.2] - 2026-03-31
 
 ### Added

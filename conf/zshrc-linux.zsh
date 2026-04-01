@@ -319,7 +319,10 @@ alias ancheck="ansible-playbook --check"        # Simula execução do playbook 
 alias andiff="ansible-playbook --check --diff"  # Simula e exibe diff das mudanças que seriam aplicadas
 alias anfacts="ansible all -m setup"            # Coleta facts de todos os hosts do inventário
 
-# --- Sistema (Linux) ---
+# --- Cron & Scheduling ---
+alias cronb="cronboard"                         # Abre o dashboard TUI do Cronboard para gerenciar crontab
+
+# --- Network ---
 alias psg="ps aux | grep"                       # Busca processos por nome (ex: psg nginx)
 alias df="df -h"                                # Uso de disco com tamanhos legíveis
 alias meminfo="free -h"                         # Exibe uso de memória RAM e swap

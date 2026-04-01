@@ -313,6 +313,9 @@ alias ancheck="ansible-playbook --check"        # Simula execução do playbook 
 alias andiff="ansible-playbook --check --diff"  # Simula e exibe diff das mudanças que seriam aplicadas
 alias anfacts="ansible all -m setup"            # Coleta facts de todos os hosts do inventário
 
+# --- Cron & Scheduling ---
+alias cronb="cronboard"                         # Abre o dashboard TUI do Cronboard para gerenciar crontab
+
 # --- Sistema (macOS) ---
 alias topc="top -o cpu"                         # Monitora processos ordenados por uso de CPU
 alias topm="top -o mem"                         # Monitora processos ordenados por uso de memória

@@ -1431,6 +1431,14 @@ This is the exhaustive list of all aliases configured by SetupVibe on all platfo
   - Description: Collects facts from all inventory hosts.
   - Example: `anfacts`
 
+### Cron & Scheduling
+
+- **`cronb`**
+  - Availability: 🌐 Both
+  - Command: `cronboard`
+  - Description: Opens the Cronboard TUI dashboard to manage cron tasks.
+  - Example: `cronb`
+
 ### Monitoring & Processes
 - **`topc`**
   - Availability: 🌐 Both
