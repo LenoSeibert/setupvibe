@@ -2,8 +2,8 @@
 
 SetupVibe installs [PM2](https://pm2.keymetrics.io/) globally and configures it for auto-startup on the Desktop edition.
 
-- **macOS:** auto-startup via launchd; downloads `ecosystem.config.js` from the repository to `~/ecosystem.config.js`
-- **Linux:** auto-startup via systemd; downloads `ecosystem.config.js` from the repository to `~/ecosystem.config.js`
+- **macOS:** auto-startup via launchd; downloads and starts `ecosystem.config.js` from the repository to `~/ecosystem.config.js`
+- **Linux:** auto-startup via systemd; downloads and starts `ecosystem.config.js` from the repository to `~/ecosystem.config.js`
 
 ---
 

@@ -1125,7 +1125,12 @@ step_14() {
         echo "Downloading PM2 ecosystem configuration..."
         safe_download https://raw.githubusercontent.com/promovaweb/setupvibe/main/conf/ecosystem.config.js "$REAL_HOME/ecosystem.config.js"
         sys_do chown "$REAL_USER:$(id -gn $REAL_USER)" "$REAL_HOME/ecosystem.config.js"
-        echo -e "${GREEN}✔ PM2 defaults configured — template saved to ~/ecosystem.config.js${NC}"
+        
+        echo "Starting PM2 applications from ecosystem file..."
+        user_do pm2 start "$REAL_HOME/ecosystem.config.js"
+        user_do pm2 save
+        
+        echo -e "${GREEN}✔ PM2 defaults configured — applications started from ~/ecosystem.config.js${NC}"
     else
         echo -e "${YELLOW}⚠ PM2 not found — skipping auto-startup configuration.${NC}"
     fi

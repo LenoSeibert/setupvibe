@@ -2,8 +2,8 @@
 
 SetupVibe instala [PM2](https://pm2.keymetrics.io/) globalmente y lo configura para que se inicie automáticamente en la edición Desktop.
 
-- **macOS:** inicio automático mediante launchd; descarga `ecosystem.config.js` del repositorio a `~/ecosystem.config.js`
-- **Linux:** inicio automático mediante systemd; descarga `ecosystem.config.js` del repositorio a `~/ecosystem.config.js`
+- **macOS:** inicio automático mediante launchd; descarga e inicia `ecosystem.config.js` del repositorio a `~/ecosystem.config.js`
+- **Linux:** inicio automático mediante systemd; descarga e inicia `ecosystem.config.js` del repositorio a `~/ecosystem.config.js`
 
 ---
 
