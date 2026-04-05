@@ -1,57 +1,70 @@
 ---
 name: documentation
-description: Automates the creation, translation, and versioning of project documentation (SetupVibe). Use when adding new guides, updating versions across all .md files, or ensuring multi-language (EN, PT-BR, ES, FR) consistency in the docs/ directory.
+description: Workflow mestre para gestão de documentação do SetupVibe. Automatiza criação de guias, traduções para PT-BR/ES/FR, sincronização de passos (steps) das scripts, automação de CHANGELOG via git e validação rigorosa de links e padrões Markdown.
 ---
 
-# Documentation Workflow
+# 📖 Workflow de Documentação SetupVibe
 
-This skill automates the standard documentation process for SetupVibe.
+Este guia define o padrão ouro para manter a documentação do SetupVibe sincronizada, traduzida e tecnicamente impecável.
 
-## 1. Documentation Creation
+## 🏗️ Fase 1: Criação e Padrões Markdown (Linter)
 
-When creating a new tool guide (e.g., `SPECKIT.md`):
+Ao criar ou editar QUALQUER arquivo `.md`, você DEVE seguir estas regras para evitar erros de renderização:
 
-- **Location:** Always start in `docs/desktop/en/` or `docs/server/en/`.
-- **Header:** Every file MUST start with an H1 and a version tag.
-  ```markdown
-  # Tool Name Guide
+1.  **Cabeçalho Padrão:** O arquivo deve começar com um H1 seguido de um blockquote com a versão.
+    *   *Exemplo:*
+        ```markdown
+        # Título do Guia
+        
+        > Descrição curta — v0.41.6
+        ```
+2.  **Hierarquia de Títulos:** Use `#` para H1, `##` para H2, etc. Nunca pule níveis (ex: não pule de H1 para H3).
+3.  **Tabelas:** Alinhamento obrigatório com pipes `|` e linha separadora `|---|---|`.
+4.  **Blocos de Código:** Sempre especifique a linguagem para syntax highlighting (ex: ` ```bash `, ` ```js `).
+5.  **Links Relativos:** Verifique se o caminho está correto em relação à localização do arquivo. 
+    *   *Atenção:* Arquivos em `docs/desktop/pt-br/` que linkam para `conf/` devem usar `../../../conf/arquivo`.
+6.  **Rodapé Obrigatório:** Todo arquivo deve terminar exatamente com:
+    ```markdown
+    ---
+    > Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)
+    ```
 
-  > Tooling guide — vX.Y.Z
-  ```
-- **Footer:** Every file MUST end with the standard footer.
-  ```markdown
-  ---
-  > Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)
-  ```
+## 🔄 Fase 2: Sincronização de Passos (Steps)
 
-## 2. Multi-language Translation
+Sempre que houver mudanças nas funções `step_NN_` nos arquivos `desktop.sh` ou `server.sh`:
 
-After creating the English version, automatically generate translations for:
-- **Portuguese (PT-BR):** `docs/**/pt-br/`
-- **Spanish (ES):** `docs/**/es/`
-- **French (FR):** `docs/**/fr/`
+1.  **Mapeamento:** Localize a função no script (ex: `step_13`).
+2.  **Atualização:** Vá até a seção "What Gets Installed" (ou "O que é instalado") nos READMEs correspondentes.
+3.  **Replicação:** Aplique a mudança no `README.md` da raiz e nos READMEs de `docs/desktop/` ou `docs/server/` em **todos os 4 idiomas**.
 
-Maintain the same structure and header style, translating the content but keeping technical commands and aliases intact.
+## 📝 Fase 3: Automação de CHANGELOG
 
-## 3. Link Integration
+Para documentar uma nova versão:
 
-When a new guide is added, update the corresponding `README.md` files in ALL language folders:
-- Add a row to the "Tool/Guide" table.
-- Ensure the relative link is correct (e.g., `[SPECKIT.md](SPECKIT.md)`).
+1.  **Coleta:** Use `git log vANTERIOR..HEAD --oneline` para ver o que mudou.
+2.  **Classificação:**
+    *   `Added`: Novos scripts, ferramentas ou aliases.
+    *   `Changed`: Melhorias em funções existentes ou refatoração.
+    *   `Fixed`: Correções de bugs ou permissões.
+3.  **Escrita:** Siga o padrão [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## 4. Version Management
+## 🌍 Fase 4: Tradução e Glossário Técnico
 
-When a version bump is requested:
-1. Update `VERSION="..."` in `desktop.sh` and `server.sh`.
-2. Update version tags in `README.md`, `GEMINI.md`, `CLAUDE.md`.
-3. Update version tags in ALL `.md` files in `docs/` (including all subdirectories and languages).
-4. Create a new entry in `CHANGELOG.md` following the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
+O Inglês (`en/`) é sempre a fonte da verdade. Ao traduzir para `pt-br/`, `es/` e `fr/`:
 
-## 5. Verification
+*   **NÃO TRADUZA:** Comandos de terminal, nomes de pacotes, aliases ou variáveis de ambiente.
+*   **TRADUZA:** Explicações, labels de tabelas e títulos.
+*   **Glossário de Consistência:**
+    *   `Step` ➔ Passo (PT) / Paso (ES) / Étape (FR)
+    *   `Setup` ➔ Configuração (PT) / Configuración (ES) / Configuration (FR)
+    *   `Tool` ➔ Ferramenta (PT) / Herramienta (ES) / Outil (FR)
 
-- Use `grep_search` to find any remaining old version strings.
-- Verify that all relative links in `docs/` point to existing files.
-- Ensure consistent header formatting (H1 + blockquote version).
+## 🔍 Fase 5: Validação Final (Checklist)
+
+Antes de considerar a tarefa concluída, execute:
+1.  `grep_search` para garantir que a versão antiga não existe mais.
+2.  `ls` nos caminhos dos links relativos criados para confirmar que o arquivo de destino existe.
+3.  Verificação visual de que o rodapé padrão está presente.
 
 ---
 > Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)
