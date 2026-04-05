@@ -24,23 +24,19 @@ Distribua as mudanças nas seções padronizadas do "Keep a Changelog":
 - **Fixed:** Correção de bugs, ajustes de permissões (sudo/user), tratamento de edge cases ou correção de links.
 - **Removed:** Recursos ou ferramentas que foram removidos do projeto.
 
-## 3. Formatação e Estilo
+## 3. Formatação e Estilo (Delegado)
 
-- **Cabeçalho da Versão:** Use H2 com colchetes, versão e data (AAAA-MM-DD).
-  *   *Exemplo:* `## [v0.41.6] - 2026-04-05`
-- **Mensagens:**
-  *   Use o tempo verbal no passado (ex: "Added", "Improved", "Fixed").
-  *   Seja conciso mas específico (ex: em vez de "Update PATH", use "Improved PATH handling for Ruby and Composer").
-  *   Use bullet points (`- `).
-- **Espaçamento:** Uma linha em branco entre o título da categoria e o primeiro item, e entre categorias.
-- **Separador:** Use `---` entre versões para manter a legibilidade.
+Para garantir a perfeição visual e técnica do `CHANGELOG.md`:
+
+- **Cabeçalho da Versão:** Use H2 com colchetes, versão e data (AAAA-MM-DD). Ex: `## [v0.41.6] - 2026-04-05`.
+- **Mensagens:** Use bullet points `-` e tempo verbal no passado (Added, Improved, Fixed).
+- **Linting:** Após gerar o conteúdo, **você deve invocar a skill `markdown-format`** para aplicar o alinhamento de tabelas, espaçamento de blocos e o rodapé obrigatório.
 
 ## 4. Checklist de Integridade
 
 - [ ] A versão no CHANGELOG coincide exatamente com a `VERSION` em `desktop.sh` e `server.sh`.
-- [ ] A data está correta (data do dia da liberação).
 - [ ] O novo bloco de versão está no **topo** do arquivo (abaixo do header principal).
-- [ ] Todos os arquivos `.md` da pasta `docs/` e da raiz foram atualizados para refletir essa mesma versão.
+- [ ] **Validação via Skill:** O arquivo foi processado pela skill `markdown-format`?
 - [ ] O arquivo termina com o rodapé de formatação padrão.
 
 ---
@@ -58,11 +54,6 @@ Distribua as mudanças nas seções padronizadas do "Keep a Changelog":
 ### Changed
 
 - Migração do passo de IA CLI para utilizar a nova API do Gemini.
-- Otimização do tempo de boot do Tmux via pré-carregamento de plugins.
-
-### Fixed
-
-- Corrigido erro de permissão ao instalar o `uv` em sistemas Debian 12.
 ```
 
 ---

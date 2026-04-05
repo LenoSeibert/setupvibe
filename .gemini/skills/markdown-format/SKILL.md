@@ -7,49 +7,39 @@ metadata:
 
 # Markdown Format
 
-Apply the SetupVibe Markdown rules to every `.md` file you create or edit.
+Apply the SetupVibe Markdown rules to every `.md` file you create or edit. This skill acts as the project's **Linter and Formatter**.
 
-## Mandatory Rules
+## Mandatory Rules (Linter)
 
-Every Markdown file in this project must follow these rules:
+Every Markdown file in this project **MUST** strictly adhere to these rules. Any deviation is considered a build failure:
 
-1. **Headings** — use hierarchical `#` (H1 → H2 → H3), never skip levels.
-2. **Tables** — columns aligned with pipes `|`, always include a separator row `|---|---|`.
-3. **Code blocks** — always specify the language (` ```bash `, ` ```js `, etc.).
-4. **Links** — use `[text](url)` format, never bare URLs.
-5. **Lists** — hyphens `-` for unordered items; numbers for ordered lists.
-6. **Blank lines** — one blank line before and after headings, code blocks, and tables.
-7. **No inline HTML** — do not use `<br>`, `<b>`, `<i>` or other tags inside Markdown.
-8. **Footer link** — every `.md` file must end with this footer:
+1. **Headings** — use hierarchical `#` (H1 → H2 → H3). **Never skip levels** (e.g., H1 to H3).
+2. **Tables** — columns MUST be aligned with pipes `|`. Always include a separator row `|---|---|`.
+3. **Code blocks** — always specify the language for syntax highlighting (e.g., ` ```bash `, ` ```js `).
+4. **Links** — use `[text](url)` format. **Bare URLs are forbidden**.
+5. **Lists** — use hyphens `-` for unordered items and numbers `1.` for ordered lists.
+6. **Blank lines** — exactly **one blank line** before and after headings, code blocks, tables, and lists.
+7. **No inline HTML** — do not use `<br>`, `<b>`, `<i>`, or any other HTML tags. Use Markdown equivalents.
+8. **Footer link** — every `.md` file MUST end exactly with this footer:
 
 ```markdown
 ---
 > Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)
 ```
 
-## How to Apply
+## How to Apply (Formatter)
 
-For each `.md` file modified or created:
+When formatting a file:
 
-1. Verify all rules above are respected.
-2. Fix spacing, table alignment, and code blocks missing a language specifier.
-3. Add the footer link if absent.
-4. Never remove content; format only.
-
-## Common Targets
-
-- `README.md`
-- `CLAUDE.md`
-- `GEMINI.md`
-- `AGENTS.md`
-- `docs/desktop/en/README.md`
-- `docs/desktop/en/tmux.md`
-- `docs/desktop/en/pm2.md`
-- `docs/server/en/README.md`
+1. **Surgical Alignment:** Fix pipe alignment in tables to ensure they are readable in raw format.
+2. **Spacing Fix:** Ensure exactly one empty line between blocks. Remove trailing spaces.
+3. **Language Detection:** If a code block lacks a language, detect it based on context (bash, zsh, js, json, etc.).
+4. **Footer Insertion:** Append the mandatory footer if it's missing or incorrect.
+5. **Standardization:** Convert any non-standard list markers (like `*` or `+`) to `-`.
 
 ## Invocation
 
-Use `markdown-format` when a task creates or edits Markdown in this repository.
+This skill is the **source of truth** for formatting. It must be called at the end of every task that modifies Markdown files to ensure compliance.
 
 ---
 > Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)
