@@ -147,9 +147,9 @@ Instaladas mediante Homebrew en ambas plataformas.
 
 Presiona `prefix + I` dentro de tmux para instalar todos los plugins. Consulta [tmux.md](tmux.md) para la referencia completa de plugins y atajos.
 
-### Paso 13 — Herramientas IA CLI
+### Paso 13 — Herramientas de IA (CLI)
 
-Instaladas globalmente vía `npm install -g`:
+Instaladas globalmente a través de `npm install -g`:
 
 | Herramienta        | Paquete                          |
 | ------------------ | -------------------------------- |
@@ -158,6 +158,8 @@ Instaladas globalmente vía `npm install -g`:
 | Gemini CLI         | `@google/gemini-cli`             |
 | OpenAI Codex       | `@openai/codex`                  |
 | GitHub Copilot CLI | `@githubnext/github-copilot-cli` |
+
+**Spec-Kit** se instala a través de `uv tool install specify-cli`. Consulte [SPECKIT.md](SPECKIT.md) para obtener la guía completa de Spec-Driven Development y los aliases.
 
 ### Paso 14 — Finalización y Limpieza
 

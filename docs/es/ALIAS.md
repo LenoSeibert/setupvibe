@@ -1,6 +1,8 @@
 # Aliases de SetupVibe
 
-Esta es la lista exhaustiva de todos los aliases configurados por SetupVibe en todas las plataformas.
+> Aliases del entorno de shell — v0.41.6
+
+Esta é a lista exaustiva de todos os aliases configurados pelo SetupVibe em todas as plataformas.
 
 **Leyenda de Disponibilidad:**
 - 🖥️ **Desktop**: Disponible en la edición Desktop (macOS y Linux Desktop).

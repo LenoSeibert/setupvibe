@@ -160,6 +160,8 @@ Installed globally via `npm install -g`:
 | OpenAI Codex       | `@openai/codex`                  |
 | GitHub Copilot CLI | `@githubnext/github-copilot-cli` |
 
+**Spec-Kit** is installed via `uv tool install specify-cli`. See [SPECKIT.md](SPECKIT.md) for the full Spec-Driven Development guide and aliases.
+
 ### Step 14 — Finalization & Cleanup
 
 **macOS:** `brew cleanup --prune=all`, `brew autoremove`, clears `~/Library/Caches` and `~/.Trash`.

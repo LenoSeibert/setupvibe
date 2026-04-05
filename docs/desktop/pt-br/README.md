@@ -149,7 +149,7 @@ Instaladas via Homebrew em ambas as plataformas.
 
 Pressione `prefix + I` dentro do tmux para instalar todos os plugins. Consulte [tmux.md](tmux.md) para a referência completa de plugins e atalhos de teclado.
 
-### Etapa 13 — Ferramentas de IA via CLI
+### Passo 13 — Ferramentas de IA (CLI)
 
 Instaladas globalmente via `npm install -g`:
 
@@ -161,7 +161,9 @@ Instaladas globalmente via `npm install -g`:
 | OpenAI Codex       | `@openai/codex`                  |
 | GitHub Copilot CLI | `@githubnext/github-copilot-cli` |
 
-### Etapa 14 — Finalização e Limpeza
+O **Spec-Kit** é instalado via `uv tool install specify-cli`. Veja o [SPECKIT.md](SPECKIT.md) para o guia completo de Spec-Driven Development e aliases.
+
+### Passo 14 — Finalização e Limpeza
 
 **macOS:** `brew cleanup --prune=all`, `brew autoremove`, limpa `~/Library/Caches` e `~/.Trash`.
 
