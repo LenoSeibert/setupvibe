@@ -600,6 +600,11 @@ step_5() {
     safe_download https://raw.githubusercontent.com/promovaweb/setupvibe/main/conf/zshrc-server.zsh "$REAL_HOME/.zshrc"
     sys_do chown $REAL_USER:$REAL_USER "$REAL_HOME/.zshrc"
 
+    # Ensure ~/.local/bin is in .bashrc so tools like uv are accessible in bash sessions
+    if ! grep -q '\.local/bin' "$REAL_HOME/.bashrc" 2>/dev/null; then
+        echo 'export PATH="$HOME/.local/bin:$PATH"' | user_do tee -a "$REAL_HOME/.bashrc" > /dev/null
+    fi
+
     if [ "$SHELL" != "/bin/zsh" ] && [ "$SHELL" != "/usr/bin/zsh" ]; then
         sys_do chsh -s $(which zsh) $REAL_USER
     fi
@@ -802,6 +807,7 @@ echo ""
 echo -e "${GREEN}${BOLD}SetupVibe Server Edition Completed Successfully! 🚀${NC}"
 echo ""
 echo -e "${YELLOW}${BOLD}IMPORTANT - Apply changes to your shell:${NC}"
-echo -e "${CYAN}For ZSH users:${NC}    source ~/.zshrc"
+echo -e "${CYAN}Reload ZSH now:${NC}   exec zsh"
+echo -e "${CYAN}Or for Bash:${NC}      source ~/.bashrc"
 echo ""
 echo -e "${YELLOW}Or restart your terminal / logout and login again.${NC}"

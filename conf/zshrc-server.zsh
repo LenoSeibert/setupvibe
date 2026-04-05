@@ -278,3 +278,11 @@ alias genpass="openssl rand -base64 32"         # Gera uma senha aleatória segu
 alias envls="env | sort"                        # Lista todas as variáveis de ambiente ordenadas
 alias envg="env | grep"                         # Filtra variáveis de ambiente (ex: envg PATH)
 alias dotenv="export \$(cat .env | grep -v '^#' | xargs)" # Carrega variáveis do arquivo .env atual
+
+# --- Python / uv ---
+alias py="python3"                              # Atalho para Python 3
+alias pyv="python3 --version"                   # Exibe a versão ativa do Python
+alias uvi="uv pip install"                      # Instala pacote Python com uv (ex: uvi requests)
+alias uvs="uv run"                              # Executa script com uv (ex: uvs main.py)
+alias venv="python3 -m venv .venv && source .venv/bin/activate" # Cria e ativa virtualenv local
+alias activate="source .venv/bin/activate"      # Ativa o virtualenv local do diretório
